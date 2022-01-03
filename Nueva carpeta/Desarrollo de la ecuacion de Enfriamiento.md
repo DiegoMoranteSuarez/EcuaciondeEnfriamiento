@@ -11,19 +11,17 @@ Se halla la constante de enfriamiento _k_ con ayuda de temperatura final e inici
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-Temperatura inicial
 ```{r}
 T_0 <- 71.3
 ```
 
 Parámetro de enfriamiento
 ```{r}
-k = log((23.2 - 20)/(T_0 - 20))/(-1000)
+k = log((23.2 - 20)/(71.3 - 20))/(-1000)
 k
 ```
 
-Función: 
+Función 
 ```{r}
 t <- seq(1,7200,50)
 Temp <- 20 + exp(-0.00277454*t)*(T_0 - 20)
@@ -48,12 +46,12 @@ Var_Temp(1000, 71.3)
 
 # GRÁFICA DE LA ECUACIÓN DE ENFRIAMIENTO 
 
-Grafica para un tiempo transcurrido 0 y 1000 segundos y una temperatura de partida o inicial T_0 = 71.3 °C 
+Grafica para un t=1000 segundos y una temperatura de partida o inicial T_0 = 71.3 °C 
 ```{r message=FALSE, warning=FALSE}
 plot(t, Temp, xlim=c(0, 1200), ylim=c(0, 71.3),
      type = "o", pch = 17,
      xlab = "tiempo [s]", ylab = "Variacion de Temperatura [T°]", 
-     main = "Variacion de Temperatura por Segundo")
+     main = "Variacion de temperatura")
 
 points(1000, 23.3, pch = 4, col = "red")
 
@@ -65,8 +63,8 @@ abline(h =23.2, v =1000,
        lty = 10, 
        col = "red")
 
-legend(850, 60 ,c("71.3 °C <> 0 seg ", "23.2 °C <> 1000 seg "), col = c("forestgreen", "red"), 
-       lty=1:3, cex=0.75)
+legend(1010, 15 ,c("71.3 °C <> 0 seg ", "23.2 °C <> 1000 seg "), col = c("forestgreen", "red"), 
+       lty=1:5, cex=0.55)
 ```
 
 
@@ -82,7 +80,7 @@ abline(h =20,
        lty = 10, 
        col = "red")
 
-legend(4500, 60 , c("Temperatura Ambiente 20°C", "Decaimiento Exponencial"), 
+legend(5000, 60 , c("Temperatura Ambiente 20°C", "Decaimiento Exponencial"), 
        col = c("red", "black"),
        lty=1:3, cex=0.75)
 

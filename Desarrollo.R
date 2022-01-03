@@ -1,14 +1,16 @@
+#DESARROLLO DE LA ECUACIÓN DE ENFRIAMIENTO
 
 k = log((23.2 - 20)/(71.3 - 20))/(-1000)
 
 Var_Temp <- function(t, T_0 = c(1:100)){
   VT <- 20 + exp(-0.00277454*t)*(T_0 - 20)
+  print(paste("La variación de temperatura para", t, "segundos, es", VT))
   return(VT)
 }
 
 Var_Temp(1000, 71.3)
 
-#Grafica
+#GRAFICA
 plot(Var_Temp, xlim=c(0, 1200), ylim=c(0, 25),
      0, 1500, #Intervalo 
      type = "o", pch = 17,
@@ -28,10 +30,11 @@ abline(v = 1000,
 legend(1020, 10 ,c("Cruze de lineas"), col = c("red"), 
        lty=1:5, cex=0.55)
 
-#tendencia largo plazo
+
+#Tendencia al largo plazo
 
 plot(Var_Temp, 
-     0, 2200, #Intervalo 
+     0, 7200, #Intervalo 
      type = "o", pch = 21, col = "black",
      xlab = "tiempo [s]", ylab = "Variacion de Temperatura [T°]", 
      main = "Variacion de temperatura")
